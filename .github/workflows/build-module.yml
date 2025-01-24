@@ -12,16 +12,19 @@ jobs:
     strategy:
       matrix:
         build_env:
-          - tag: "24.10.0-rc5"
+        #opkg info kernel
+        #https://downloads.openwrt.org/releases/24.10.0-rc6/targets/ramips/mt7621/kmods/
+          - tag: "24.10.0-rc6"
             pkgarch: mipsel_24kc
             target: ramips
             subtarget: mt7621
-            vermagic: "3d0c1636575f45343698be0078bada5c"
-          - tag: "24.10.0-rc5"
+            vermagic: "3abe85def815b59c6c75ac1f92135cb6"
+            #https://downloads.openwrt.org/releases/24.10.0-rc6/targets/mediatek/filogic/kmods/
+          - tag: "24.10.0-rc6"
             pkgarch: aarch64_cortex-a53
             target: 	mediatek
             subtarget: filogic
-            vermagic: "83c6d4e14f7353564d3cadaf38a15bef"
+            vermagic: "e62284b446fe7638f263008edcf81109"
 
     steps:
       - uses: actions/checkout@v4
