@@ -14,7 +14,7 @@ jobs:
         build_env:
         #opkg info kernel
         #https://downloads.openwrt.org/releases/24.10.0-rc6/targets/ramips/mt7621/kmods/
-          - tag: "24.10.0-rc6"
+          - tag: "24.10.0-rc7"
             pkgarch: mipsel_24kc
             target: ramips
             subtarget: mt7621
