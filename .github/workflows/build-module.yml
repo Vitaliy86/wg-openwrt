@@ -20,11 +20,11 @@ jobs:
             subtarget: mt7621
             vermagic: "3abe85def815b59c6c75ac1f92135cb6"
             #https://downloads.openwrt.org/releases/24.10.0-rc6/targets/mediatek/filogic/kmods/
-          - tag: "24.10.0-rc6"
+          - tag: "24.10.0-rc7"
             pkgarch: aarch64_cortex-a53
             target: 	mediatek
             subtarget: filogic
-            vermagic: "e62284b446fe7638f263008edcf81109"
+            vermagic: "d649d775435da5a8637f7a955a80d331"
 
     steps:
       - uses: actions/checkout@v4
