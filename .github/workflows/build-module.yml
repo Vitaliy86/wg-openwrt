@@ -14,13 +14,13 @@ jobs:
         build_env:
         #opkg info kernel
         #https://downloads.openwrt.org/releases/24.10.0-rc6/targets/ramips/mt7621/kmods/
-          - tag: "24.10.0"
+          - tag: "24.10.1"
             pkgarch: mipsel_24kc
             target: ramips
             subtarget: mt7621
             vermagic: "2a6d68f3ded425efc0850296e7f62d53"
             #https://downloads.openwrt.org/releases/24.10.0-rc6/targets/mediatek/filogic/kmods/
-          - tag: "24.10.0"
+          - tag: "24.10.1"
             pkgarch: aarch64_cortex-a53
             target: 	mediatek
             subtarget: filogic
