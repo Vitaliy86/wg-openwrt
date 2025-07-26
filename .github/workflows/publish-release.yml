@@ -1,37 +1,36 @@
-name: Publish AmneziaWG to Release
+name: Publish AmneziaWG Release from Artifact
 
 on:
   workflow_dispatch:
     inputs:
-      tag_name:
-        description: 'Tag / Release name (например: SNAPSHOT или v1.0.0)'
+      artifact_name:
+        description: 'Имя артефакта (без .zip)'
         required: true
-        default: 'SNAPSHOT'
+        default: 'amneziawg-24.10.2_aarch64_cortex-a53_mediatek_filogic_6a9e125268c43e0bae8cecb014c8ab03'
+      tag_name:
+        description: 'Тег для релиза'
+        required: true
+        default: '24.10.2'
       release_title:
-        description: 'Название релиза (можно на русском)'
+        description: 'Название релиза'
         required: false
-        default: 'Сборка AmneziaWG для OpenWRT'
-      artifact_path:
-        description: 'Путь к файлам .ipk'
-        required: false
-        default: 'awgrelease/*.ipk'
+        default: 'Сборка AmneziaWG для OpenWRT 24.10.2'
 
 jobs:
   release:
-    name: Upload .ipk to GitHub Release
     runs-on: ubuntu-22.04
-
     steps:
-      - name: Checkout репозиторий
-        uses: actions/checkout@v4
+      - name: Загрузить артефакт
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
 
-      - name: Создать или обновить GitHub Release
+      - name: Создать релиз и загрузить .ipk
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ inputs.tag_name }}
           name: ${{ inputs.release_title }}
-          draft: false
-          prerelease: false
-          files: ${{ inputs.artifact_path }}
+          files: |
+            *.ipk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
