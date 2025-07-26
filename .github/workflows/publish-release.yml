@@ -1,0 +1,37 @@
+name: Publish AmneziaWG to Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag / Release name (например: SNAPSHOT или v1.0.0)'
+        required: true
+        default: 'SNAPSHOT'
+      release_title:
+        description: 'Название релиза (можно на русском)'
+        required: false
+        default: 'Сборка AmneziaWG для OpenWRT'
+      artifact_path:
+        description: 'Путь к файлам .ipk'
+        required: false
+        default: 'awgrelease/*.ipk'
+
+jobs:
+  release:
+    name: Upload .ipk to GitHub Release
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout репозиторий
+        uses: actions/checkout@v4
+
+      - name: Создать или обновить GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ inputs.tag_name }}
+          name: ${{ inputs.release_title }}
+          draft: false
+          prerelease: false
+          files: ${{ inputs.artifact_path }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
