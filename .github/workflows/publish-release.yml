@@ -6,7 +6,7 @@ on:
       artifact_name:
         description: 'Имя артефакта (без .zip)'
         required: true
-        default: 'amneziawg-24.10.2_aarch64_cortex-a53_mediatek_filogic_6a9e125268c43e0bae8cecb014c8ab03'
+        default: 'amneziawg-24.10.2_aarch64_cortex-a53_mediatek_filogic_6a9e125268c43e0bae8cecb014c8ab03.zip'
       tag_name:
         description: 'Тег для релиза'
         required: true
